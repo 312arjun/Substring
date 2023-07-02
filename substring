@@ -1,0 +1,22 @@
+def substrings(s, x):
+    substrings = []
+    
+    for i in range(len(s)):
+        for j in range(i + x, len(s)):
+            if s[i] == s[j]:
+                substring = s[i:j+1]
+                if len(substring) >= x:
+                    substrings.append(substring)
+    
+    if len(substrings) > 0:
+        shortest_length = min(len(substring) for substring in substrings)
+        shortest_substrings = [substring for substring in substrings if len(substring) == shortest_length]
+        
+        for substring in shortest_substrings:
+            print(substring)
+    else:
+        print("No such substrings exist.")
+
+s = "abracadabra"
+x = 3
+substrings(s, x)
